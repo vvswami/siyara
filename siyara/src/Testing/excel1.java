@@ -18,15 +18,20 @@ public class excel1 {
 		
 		
 		FirefoxDriver driver=new FirefoxDriver(); 
-		
 		driver.manage().window().maximize();
-		driver.get("https://www.yet5.com");
-		//int f = 0;
 		
-	
-			
+		driver.get("https://www.yet5.com/training/126/1/ibm-castiron-training-institutes.html");
+		driver.findElement(By.linkText("Last")).click();
+		Thread.sleep(1000);
+		String pagecount=driver.findElement(By.className("nav_list1")).getText();
+		System.out.println(pagecount);
+		int data=Integer.parseInt(pagecount);
+		System.out.println(" Total page count-------------->"+data);
+
+		
 		int f=0;
-		for (int i = 1; i <=11; i++)
+		
+		for (int i = 1; i <=data ; i++)
 		{
 			
 			
@@ -36,7 +41,7 @@ public class excel1 {
 			
 			
 			
-			driver.get("https://www.yet5.com/training/188/"+i+"/medical-coding-training-institutes.html");
+			driver.get("https://www.yet5.com/training/126/"+i+"/ibm-castiron-training-institutes.html");
 				
 			
 			System.out.println("page count-->"+i);
@@ -103,7 +108,7 @@ public class excel1 {
 //Thread.sleep(1000);
 			
 		
-		File source = new File("C:\\Users\\venkataswami\\Desktop\\originalexcelyet5.com.xls");
+				File source = new File("C:\\Users\\venkataswami\\Desktop\\originalexcelyet5.com.xls");
 		FileInputStream input = new FileInputStream(source);
 		HSSFWorkbook wb = new HSSFWorkbook(input);
 		HSSFSheet sheet = wb.getSheetAt(0);
