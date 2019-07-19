@@ -1,7 +1,11 @@
 package light;
 
+import static org.testng.Assert.expectThrows;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -26,65 +30,62 @@ public class direct_url_search {
 		driver.manage().window().maximize();
 
 		driver.get("https://www.buildeeji.com");
-/*		FileInputStream f1 = new FileInputStream("C:\\Users\\venkataswami\\Desktop\\urlsssssssssss.xls");
-		
-		Workbook w1 = Workbook.getWorkbook(f1);
-		
-		Sheet s1 = w1.getSheet("Sheet5");
-		int rows = s1.getRows();
-		System.out.println(rows);
-		
+
+		File source=new File("C:\\Users\\venkataswami\\Desktop\\Book3.xls");
+		FileInputStream input = new FileInputStream(source);
+
+		HSSFWorkbook workbook = new HSSFWorkbook(input);
+		HSSFSheet sheet = workbook.getSheetAt(0);
+
 		HSSFCell cell = null;
-		for (int i = 0; i < rows; i++) {
-			System.out.println(i);
-			//cell = s1. getRow(i).length;
-			
-			@SuppressWarnings("null")
-			String url = cell.toString();
-			driver.get(url);
-			String actualTitle21= driver.getTitle();
-			  System.out.println("Seo title"+actualTitle21);*/
-			
-			
-		//FileInputStream file = new FileInputStream("C:\\Users\\venkataswami\\Desktop\\urlsssssssssss.xls");
+		int row = sheet.getLastRowNum();
+		System.out.println("Total urls--->"+row);
 		
-		FileInputStream file = new FileInputStream("C:\\Users\\venkataswami\\Desktop\\New_index_urls.xls");
+		String CurrentURL=null;
 		
 		
 		
-		
-		HSSFWorkbook workbook = new HSSFWorkbook(file);
-		HSSFSheet sheet = workbook.getSheet("sheet1");
-		
-		HSSFCell cell = null;
-		int row = sheet.getLastRowNum()+1;
-		System.out.println(row);
 		for (int i = 0; i < row; i++) {
-			
-			
-			if(i%100==0) 
-			{
+
+			if (i % 100 == 0) {
+				
 				System.out.println(i);
 			}
-			//System.out.println(i);
+			try
+			{
 			cell = sheet.getRow(i).getCell(0);
-		
+
 			String url = cell.toString();
 			driver.get(url);
-			
 			Thread.sleep(3000);
-			//Thread.sleep("1000");
-			String actualTitle1= driver.getCurrentUrl();
-					
-					
-					//getTitle();
-			  System.out.println("Seo title"+actualTitle1);
-		
+			String actualTitle1 = driver.getTitle();
+			System.out.println("Seo title------------->" + actualTitle1);
+			CurrentURL= driver.getCurrentUrl();
+			System.out.println(CurrentURL);
 			
-		}
-		
-	
-		
-}
 
- }
+			 String pagecount=driver.findElement(By.xpath("//div[@id='menu1']//div[@class='container-fluid'][contains(text(),'Page 1 of 1')]")).getText();
+			 System.out.println(pagecount);
+	
+			}
+			catch(Exception e)
+				
+				{
+					//System.out.println(e.toString());
+				}
+
+		}//for loop
+		
+
+		
+		
+		FileOutputStream output=new FileOutputStream(source);
+		workbook.write(output);
+		workbook.close();
+				Thread.sleep(1000);
+	
+	
+		System.out.println("Task completed");
+	}
+
+}
