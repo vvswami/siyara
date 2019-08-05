@@ -31,7 +31,7 @@ public class direct_url_search {
 
 		driver.get("https://www.buildeeji.com");
 
-		File source=new File("C:\\Users\\venkataswami\\Desktop\\Book3.xls");
+		File source=new File("C:\\Users\\venkataswami\\Desktop\\direct_urls.xls");
 		FileInputStream input = new FileInputStream(source);
 
 		HSSFWorkbook workbook = new HSSFWorkbook(input);
@@ -44,6 +44,13 @@ public class direct_url_search {
 		String CurrentURL=null;
 		
 		
+		FileOutputStream output=new FileOutputStream(source);
+		
+
+		workbook.write(output);
+		workbook.close();
+			
+				Thread.sleep(1000);
 		
 		for (int i = 0; i < row; i++) {
 
@@ -58,14 +65,13 @@ public class direct_url_search {
 			String url = cell.toString();
 			driver.get(url);
 			Thread.sleep(3000);
-			String actualTitle1 = driver.getTitle();
-			System.out.println("Seo title------------->" + actualTitle1);
+			/*String actualTitle1 = driver.getTitle();
+			System.out.println("Seo title------------->" + actualTitle1);*/
 			CurrentURL= driver.getCurrentUrl();
 			System.out.println(CurrentURL);
 			
 
-			 String pagecount=driver.findElement(By.xpath("//div[@id='menu1']//div[@class='container-fluid'][contains(text(),'Page 1 of 1')]")).getText();
-			 System.out.println(pagecount);
+			
 	
 			}
 			catch(Exception e)
@@ -79,10 +85,6 @@ public class direct_url_search {
 
 		
 		
-		FileOutputStream output=new FileOutputStream(source);
-		workbook.write(output);
-		workbook.close();
-				Thread.sleep(1000);
 	
 	
 		System.out.println("Task completed");
