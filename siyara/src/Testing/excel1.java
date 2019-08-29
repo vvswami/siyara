@@ -16,7 +16,6 @@ public class excel1 {
 	public static void main(String args[]) throws IOException, Exception
 	{
 		
-		
 		FirefoxDriver driver=new FirefoxDriver(); 
 		driver.manage().window().maximize();
 		
