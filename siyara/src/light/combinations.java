@@ -36,7 +36,8 @@ public static void main(String[]args) throws Exception{
 			 
 			 
 			 //String
-		   //	 driver.findElement(By.id("searchInput")).sendKeys("Interior and Exterior Works");
+		   //driver.findElement(By.id("searchInput")).sendKeys("Interior and Exterior Works");
+			 
 			 driver.findElement(By.id("searchInput")).sendKeys("PG for Gents ( S.V.Nagar )  Tirupati");
 		   
 
