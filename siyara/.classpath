@@ -35,5 +35,9 @@
 	<classpathentry kind="lib" path="D:/Testing Software/Vishnu Sir_Selenium/poi-3.14/poi-ooxml-3.14-20160307.jar" sourcepath="/Buildeeji@2"/>
 	<classpathentry kind="lib" path="D:/Testing Software/Vishnu Sir_Selenium/poi-3.14/poi-ooxml-schemas-3.14-20160307.jar"/>
 	<classpathentry kind="lib" path="D:/Testing Software/Vishnu Sir_Selenium/poi-3.14/poi-scratchpad-3.14-20160307.jar"/>
+	<classpathentry kind="lib" path="D:/Testing Software/Vishnu Sir_Selenium/sikuli/sikulix.jar"/>
+	<classpathentry kind="lib" path="D:/Testing Software/Vishnu Sir_Selenium/sikuli/sikulixapi.jar"/>
+	<classpathentry kind="lib" path="D:/Testing Software/Vishnu Sir_Selenium/sikuli/sikulixlibswin.jar"/>
+	<classpathentry kind="lib" path="D:/Testing Software/Vishnu Sir_Selenium/sikuli/sikulixsetup-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
